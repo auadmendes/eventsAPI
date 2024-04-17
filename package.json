@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engine": { 
+  "engine": {
     "node": "18"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
-    "build":"tsup src",
+    "build": "tsup src",
     "start": "node dist/server"
   },
   "keywords": [],
@@ -20,6 +20,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "puppeteer": "^22.6.4",
+    "puppeteer-core": "^22.6.5",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
