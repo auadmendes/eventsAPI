@@ -1,6 +1,6 @@
 import express from 'express';
 import puppeteer from 'puppeteer-core'; // Import puppeteer-core instead of puppeteer
-
+import  dotenv  from 'dotenv'
 const routes = express.Router();
 
 routes.get('/events', async (req, res) => {
@@ -8,7 +8,15 @@ routes.get('/events', async (req, res) => {
 
     // Specify the path to Chromium executable on the server
     const browser = await puppeteer.launch({
-        executablePath: '/path/to/your/chromium/executable',
+        args: [
+            "--disable-setuid-sandbox",
+            "--no-sandbox",
+            "--no-zygote",
+        ],
+
+        executablePath: process.env.NODE_ENV === 'production' 
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(),
         headless: true, // Or set it to false for debugging
     });
 
